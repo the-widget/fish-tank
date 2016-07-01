@@ -12,6 +12,8 @@ angular
       {title: 'post 5', upvotes: 4}
       ];
 
-      
+      $scope.incrementUpvotes = function(post) {
+        post.upvotes += 1;
+      }
     }
   ]);
