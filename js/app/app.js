@@ -9,11 +9,17 @@ angular
           url: '/home',
           templateUrl: '/home.html',
           controller: 'MainCtrl'
+        })
+        .state('posts', {
+          url: '/posts/{id}',
+          templateUrl: '/posts.html',
+          controller: 'PostsCtrl'
         });
+
       $urlRouterProvider.otherwise('home');
     }])
 
-  .factory('posts', [function(){
+  .factory('postsFactory', [function(){
     var o = {
       posts: []
     };
@@ -23,9 +29,9 @@ angular
 
   .controller('MainCtrl', [
     '$scope', 
-    'posts', 
-    function($scope, posts){
-      $scope.posts = posts.posts;
+    'postsFactory',
+    function($scope, postsFactory){
+      $scope.posts = postsFactory.posts;
 
   //--> FILLER POSTS
        $scope.posts.push(
@@ -52,4 +58,12 @@ angular
         post.upvotes += 1;
       }
     }
-  ]);
+  ])
+
+  .controller('PostsCtrl', [
+    '$scope',
+    '$stateParams',
+    'postsFactory',
+    function($scope, $stateParams, postsFactory){
+
+    }]);
