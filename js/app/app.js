@@ -1,5 +1,18 @@
 angular
-  .module('fishTank', [])
+  .module('fishTank', ['ui.router'])
+  .config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider){
+      $stateProvider
+        .state('home', {
+          url: '/home',
+          templateUrl: '/home.html',
+          controller: 'MainCtrl'
+        });
+      $urlRouterProvider.otherwise('home');
+    }])
+
   .factory('posts', [function(){
     var o = {
       posts: []
@@ -12,10 +25,8 @@ angular
     '$scope', 
     'posts', 
     function($scope, posts){
-      $scope.test = 'Hello world!';
+      $scope.posts = posts.posts;
 
-       $scope.posts = posts.posts;
-       
   //--> FILLER POSTS
        $scope.posts.push(
       {title: 'post 1', upvotes: 5},
