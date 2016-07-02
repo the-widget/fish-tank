@@ -10,15 +10,15 @@ angular.module('fishTank')
         $scope.user = user;
       });
 
-      $scope.$on('devise:new-registration', function(e, user){
+      $scope.$on('devise:new-registration', function(event, user){
         $scope.user = user;
       });
 
-      $scope.$on('devise:login', function(e, user){
+      $scope.$on('devise:login', function(event, user){
         $scope.user = user;
       });
 
-      $scope.$on('devise:logout', function(e, user){
+      $scope.$on('devise:logout', function(event, user){
         $scope.user = {};
       });
     }]);
