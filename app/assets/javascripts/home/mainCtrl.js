@@ -14,10 +14,10 @@ angular.module('fishTank')
         });
         $scope.title = '';
         $scope.link = '';
-      }
+      };
 
       $scope.incrementUpvotes = function(post) {
-        post.upvotes += 1;
-      }
+        postsFactory.upvote(post);
+      };
     }
   ])
