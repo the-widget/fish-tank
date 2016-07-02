@@ -1,10 +1,10 @@
 angular.module('fishTank')
 .controller('PostsCtrl', [
     '$scope',
-    '$stateParams',
     'postsFactory',
-    function($scope, $stateParams, postsFactory){
-      $scope.post = postsFactory.posts[$stateParams.id]
+    'post',
+    function($scope, postsFactory, post){
+      $scope.post = post;
       $scope.incrementUpvotes = function(comment) {
         comment.upvotes += 1;
       }

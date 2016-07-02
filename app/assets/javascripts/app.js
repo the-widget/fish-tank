@@ -18,7 +18,12 @@ angular
         .state('posts', {
           url: '/posts/{id}',
           templateUrl: 'posts/_posts.html',
-          controller: 'PostsCtrl'
+          controller: 'PostsCtrl',
+          resolve: {
+            post:['$stateParams', 'postsFactory', function($stateParams, postsFactory){
+              return postsFactory.get($stateParams.id);
+            }]
+          }
         });
 
       $urlRouterProvider.otherwise('home');
