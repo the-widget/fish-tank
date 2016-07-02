@@ -1,5 +1,5 @@
 angular
-  .module('fishTank', ['ui.router', 'templates'])
+  .module('fishTank', ['ui.router', 'templates', 'Devise'])
   .config([
     '$stateProvider',
     '$urlRouterProvider',
