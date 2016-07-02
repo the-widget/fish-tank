@@ -8,7 +8,12 @@ angular
         .state('home', {
           url: '/home',
           templateUrl: 'home/_home.html',
-          controller: 'MainCtrl'
+          controller: 'MainCtrl',
+          resolve: {
+            postPromise: ['postsFactory', function(posts){
+              return posts.getAll();
+            }]
+          }
         })
         .state('posts', {
           url: '/posts/{id}',

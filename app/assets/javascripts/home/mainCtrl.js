@@ -1,3 +1,4 @@
+angular.module('fishTank')
 .controller('MainCtrl', [
     '$scope', 
     'postsFactory',
