@@ -6,14 +6,16 @@ angular.module('fishTank')
     function($scope, postsFactory, post){
       $scope.post = post;
       $scope.incrementUpvotes = function(comment) {
-        comment.upvotes += 1;
-      }
+        postsFactory.upvoteComment(post, comment);
+      };
 
       $scope.addComment = function(){
-        $scope.post.comments.push({
+        if($scope.body === ''){return;}
+        postsFactory.addComment(post.id, {
           body: $scope.body,
-          author: 'user',
-          upvotes: 0
+          author: 'user'
+        }).success(function(comment) {
+          $scope.post.comments.push(comment)
         });
         $scope.body = '';
       };
