@@ -8,6 +8,9 @@ angular.module('fishTank')
       $scope.incrementUpvotes = function(comment) {
         postsFactory.upvoteComment(post, comment);
       };
+      $scope.decrementUpvotes = function(comment) {
+        postsFactory.downvoteComment(post, comment);
+      };
 
       $scope.addComment = function(){
         if($scope.body === ''){return;}

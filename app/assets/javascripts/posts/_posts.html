@@ -11,6 +11,7 @@
 
 <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
   <span class="glyphicon glyphicon-thumbs-up btn-xs" ng-click="incrementUpvotes(comment)"></span>
+  <span class="glyphicon glyphicon-thumbs-down btn-xs" ng-click="decrementUpvotes(comment)"></span>
   <span class="badge">{{comment.upvotes}}</span> 
   <span style="font-size:20px; margin-left:10px;">
     {{comment.body}}

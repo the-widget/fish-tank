@@ -47,5 +47,12 @@ angular.module('fishTank')
     });
   };
 
+  o.downvoteComment = function(post, comment) {
+    return $http.put('/posts/' + post.id + '/comments/' + comment.id + '/downvote.json')
+    .success(function(data){
+      comment.upvotes -= 1;
+    });
+  };
+
   return o;
 }]);
