@@ -19,5 +19,9 @@ angular.module('fishTank')
       $scope.incrementUpvotes = function(post) {
         postsFactory.upvote(post);
       };
+
+      $scope.decrementUpvotes = function(post) {
+        postsFactory.downvote(post);
+      };
     }
   ])
