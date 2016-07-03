@@ -14,8 +14,6 @@ angular.module('fishTank')
       Auth.register($scope.user).then(function(){
         $state.go('home');
       });
-    };
-
-    
+    };    
     
   }]);

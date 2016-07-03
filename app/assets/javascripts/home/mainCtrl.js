@@ -1,11 +1,18 @@
 angular.module('fishTank')
 .controller('MainCtrl', [
-    '$scope', 
+    '$scope',
     'postsFactory',
-    function($scope, postsFactory){
-      $scope.posts = postsFactory.posts;
+    'Auth',
+    function($scope, postsFactory, Auth){
+      var self = $scope
 
-      $scope.addPost = function(){
+      Auth.currentUser().then(function(user){
+        $scope.user = user;
+      });
+
+      self.posts = postsFactory.posts;
+      
+      self.addPost = function(){
         if(!$scope.title || $scope.title === '') {return;}
         postsFactory.create({
           title: $scope.title,
@@ -16,12 +23,14 @@ angular.module('fishTank')
         $scope.link = '';
       };
 
-      $scope.incrementUpvotes = function(post) {
+      self.incrementUpvotes = function(post) {
         postsFactory.upvote(post);
       };
 
-      $scope.decrementUpvotes = function(post) {
+      self.decrementUpvotes = function(post) {
         postsFactory.downvote(post);
       };
     }
   ])
+
+

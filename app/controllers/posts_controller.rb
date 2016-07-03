@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :upvote, :downvote]
 
   def index
+    @user = current_user
     respond_with Post.all
   end
 
