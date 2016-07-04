@@ -1,11 +1,10 @@
 <div class="page-header">
-  <h1>Fish Tank</h1> {{user.username}}
-  <b><input type="checkbox" ng-checked="user.checked" ng-model="checked">My Posts</b>
-  {{checked}}
+  <h1>Fish Tank</h1>
+  <b><input type="checkbox" ng-checked="user.checked" ng-model="checked">My Posts</b>  <b><input type="text" ng-model="search" placeholder="Search"></b>
 </div>
 
 
-<div ng-if="checked" ng-repeat="post in posts | userPostsFilter:user.username" >
+<div ng-if="checked" ng-repeat="post in posts | userPostsFilter:user.username | filter:search | orderBy: '-upvotes'" >
   <span ng-click="incrementUpvotes(post)" class="glyphicon glyphicon-thumbs-up btn-xs"></span>
   <span ng-click="decrementUpvotes(post)" class="glyphicon glyphicon-thumbs-down btn-xs"></span>
   <span class="badge">{{post.upvotes}}</span>
@@ -23,7 +22,7 @@
   </span>
 </div>
 
-<div ng-hide="checked" ng-repeat="post in posts">
+<div ng-hide="checked" ng-repeat="post in posts | orderBy: '-upvotes'| filter:search ">
   <span ng-click="incrementUpvotes(post)" class="glyphicon glyphicon-thumbs-up btn-xs"></span>
   <span ng-click="decrementUpvotes(post)" class="glyphicon glyphicon-thumbs-down btn-xs"></span>
   <span class="badge">{{post.upvotes}}</span>
