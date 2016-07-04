@@ -13,6 +13,7 @@ angular.module('fishTank')
       };
 
       $scope.addComment = function(){
+        errors();
         if($scope.body === ''){return;}
         postsFactory.addComment(post.id, {
           body: $scope.body,
@@ -22,4 +23,10 @@ angular.module('fishTank')
         });
         $scope.body = '';
       };
+
+      var errors = function() {
+        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
+          $scope.error = xhr.data.error
+        });
+      }
   }]);

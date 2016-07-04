@@ -13,6 +13,7 @@ angular.module('fishTank')
       };
   
       $scope.register = function(){
+        errors();
         Auth.register($scope.user).then(function(){
           $state.go('home');
         });
