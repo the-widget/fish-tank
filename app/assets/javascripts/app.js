@@ -1,5 +1,5 @@
 angular
-  .module('fishTank', ['ui.router', 'templates', 'Devise', 'ngMessages'])
+  .module('fishTank', ['ui.router', 'templates', 'Devise', 'ngMessages', 'ngAnimate'])
   .config([
     '$stateProvider',
     '$urlRouterProvider',
