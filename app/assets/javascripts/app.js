@@ -39,9 +39,17 @@ angular
           onEnter: ['$state', 'Auth', function($state, Auth) {
             Auth.currentUser().then(function (){
             $state.go('home');
-          })
-        }]
-      });
+            })
+          }]
+        })
+        .state('about', {
+          url: '/about',
+          templateUrl: 'home/_about.html'
+        })
+        .state('contact', {
+          url: '/contact',
+          templateUrl: 'home/_contact.html'
+        });
 
       $urlRouterProvider.otherwise('home');
     }])
