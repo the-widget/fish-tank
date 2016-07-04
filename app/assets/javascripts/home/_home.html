@@ -1,9 +1,9 @@
-<div class="page-header">
-  <h1>Fish Tank</h1>
+
+  <welcome></welcome>
+
+
   <b><input type="checkbox" ng-checked="user.checked" ng-model="checked">My Posts</b>  <b><input type="text" ng-model="search" placeholder="Search"></b>
   <p>{{error}}</p>
-</div>
-
 
 <div ng-if="checked" ng-repeat="post in posts | userPostsFilter:user.username | filter:search | orderBy: '-upvotes'" >
   <span ng-click="incrementUpvotes(post)" class="glyphicon glyphicon-thumbs-up btn-xs"></span>
