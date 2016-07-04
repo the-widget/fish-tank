@@ -3,8 +3,10 @@ angular.module('fishTank')
     '$scope',
     'postsFactory',
     'Auth',
-    function($scope, postsFactory, Auth){
-      var self = $scope
+    '$http',
+    function($scope, postsFactory, Auth, $http){
+
+      var self = $scope 
 
       Auth.currentUser().then(function(user){
         $scope.user = user;
@@ -13,6 +15,7 @@ angular.module('fishTank')
       self.posts = postsFactory.posts;
       
       self.addPost = function(){
+        errors()
         if(!$scope.title || $scope.title === '') {return;}
         postsFactory.create({
           title: $scope.title,
@@ -30,6 +33,12 @@ angular.module('fishTank')
       self.decrementUpvotes = function(post) {
         postsFactory.downvote(post);
       };
+
+      var errors = function() {
+        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
+          $scope.error = xhr.data.error
+        });
+      }
     }
   ])
 

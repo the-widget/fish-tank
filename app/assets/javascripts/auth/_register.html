@@ -1,16 +1,58 @@
 <div class="page-headers">
   <h1>Register</h1>
-</div>
+  {{error}}
+</div><br>
 
-<form ng-submit="register()">
-  <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
-  </div>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
-  </div>
-  <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-  </div>
-  <input type="submit" class="btn btn-default" value="Register">
-</form>
+<div class="col-md-4 col-centered text-centered">
+  <form name="registerForm" ng-submit="register()">
+  
+    <fieldset class="form-group">
+      <input name="userEmail"
+             class="form-control" 
+             type="email"
+             placeholder="Email"
+             ng-model="user.email"
+             ng-minlength="5"
+             ng-maxlength="30"
+             required />
+      <div ng-messages="registerForm.userEmail.$error" ng-show="registerForm.userEmail.$touched">
+        <div ng-message="required"> You did not enter an email address </div>
+        <div ng-messages-include="validations/errorMessages.html"></div>
+      </div>
+    </fieldset>
+      
+  
+  
+    <fieldset class="form-group">
+      <input name="userName"
+             class="form-control" 
+             type="text"
+             placeholder="Username"
+             ng-model="user.username"
+             ng-pattern="/^[ A-Za-z0-9_@.\/#&+-]*$/"
+             required>
+      <div ng-messages="registerForm.userName.$error" ng-show="registerForm.userName.$touched">
+        <div ng-message when="required">This field is required</div>
+        <div ng-message when="pattern">Only accepts these special characters: (@./#&+_-)</div>
+      </div>
+    </fieldset>
+  
+   
+  
+  
+    <fieldset class="form-group">
+      <input name="userPassword"
+             class="form-control" 
+             type="password" 
+             placeholder="Password" 
+             ng-model="user.password" 
+             minlength="6" 
+             maxlength="12"
+             required>
+      <div ng-messages="registerForm.userPassword.$error" ng-show="registerForm.userPassword.$touched">
+        <div ng-messages-include="validations/errorMessages.html"></div>
+      </div>
+    </fieldset>
+    <input type="submit" class="btn btn-default" value="Register">
+  </form>
+</div>

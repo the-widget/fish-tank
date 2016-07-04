@@ -1,9 +1,11 @@
 angular
-  .module('fishTank', ['ui.router', 'templates', 'Devise'])
+  .module('fishTank', ['ui.router', 'templates', 'Devise', 'ngMessages'])
   .config([
     '$stateProvider',
     '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider){
+    'AuthInterceptProvider',
+    function($stateProvider, $urlRouterProvider, AuthInterceptProvider){
+      AuthInterceptProvider.interceptAuth(true);
       $stateProvider
         .state('home', {
           url: '/home',
