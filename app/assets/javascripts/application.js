@@ -6,4 +6,5 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-animate
+//= require bootstrap-tagsinput
 //= require_tree .

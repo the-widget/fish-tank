@@ -5,15 +5,12 @@ angular.module('fishTank')
     'Auth',
     '$http',
     function($scope, postsFactory, Auth, $http){
-
-      var self = $scope 
-
+      $("input#tags").tagsinput('items')
+      var self = $scope; 
       Auth.currentUser().then(function(user){
         $scope.user = user;
       });
-
       self.posts = postsFactory.posts;
-      
       self.addPost = function(){
         errors()
         if(!$scope.title || $scope.title === '') {return;}

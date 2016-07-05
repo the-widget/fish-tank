@@ -35,12 +35,13 @@
       {{post.title}}
     </span>
   </span>
- posted by {{ post.user.username }}
+  posted by {{ post.user.username }}
   <span>
-    <a href="#/posts/{{post.id}}">--Comments</a>
+    <a href="#/posts/{{post.id}}">--Comments</a><br>
+    <post-tags ng-data={{post.id}}></post-tags>
+    <div id="tags-{{post.id}}" class="bootstrap-tagsinput"></div>
   </span>
 </div>
-
 
 <form ng-submit="addPost()" style="margin-top:30px";>
   <h3>Add a new post</h3>
