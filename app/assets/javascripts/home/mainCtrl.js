@@ -36,6 +36,7 @@ angular.module('fishTank')
           $scope.error = xhr.data.error
         });
       }
+
     }
   ])
 

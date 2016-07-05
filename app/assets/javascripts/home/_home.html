@@ -2,7 +2,7 @@
   <welcome></welcome>
 
 
-  <b><input type="checkbox" ng-checked="user.checked" ng-model="checked">My Posts</b>  <b><input type="text" ng-model="search" placeholder="Search"></b>
+  <b><input type="checkbox" class="myposts" ng-checked="user.checked" ng-model="checked">My Posts</b>  <b><input type="text" class="search" ng-model="search" placeholder="Search"></b>
   <p>{{error}}</p>
 
 <div ng-if="checked" ng-repeat="post in posts | userPostsFilter:user.username | filter:search | orderBy: '-upvotes'" >
@@ -53,30 +53,3 @@
   </div>
     <button type="submit" class="btn btn-primary">Post</button>
 </form>
-
-
-<!-- <form ng-submit="addPost()" name="addPost" style="margin-top:30px";>
-  <h3>Add a new post</h3>
-
-  <fieldset class="form-group">
-    <input name="title"
-           type="text"
-           placeholder="Title"
-           ng-model="title"
-           required/>
-
-    <div ng-messages="addPost.title.$error" ng-show="addPost.title.$touched">
-      <div ng-messages-include="validations/errorMessages.html"></div>
-    </div>
-  </fieldset>
-
-  <fieldset class="form-group">
-    <input name="link"
-           type="text"
-           placeholder="Link"
-           ng-model="link"/>
-  </fieldset>
-
-  <input type="submit" class="btn btn-primary"/>
-</form> -->
-
