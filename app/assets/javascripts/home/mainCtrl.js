@@ -6,11 +6,13 @@ angular.module('fishTank')
     '$http',
     function($scope, postsFactory, Auth, $http){
       var self = $scope; 
-      
       Auth.currentUser().then(function(user){
         $scope.user = user;
       });
       self.posts = postsFactory.posts;
+      self.showAddPost = function(){
+        $("div.addPost").toggle();
+      }
       self.addPost = function(){
         errors()
         if(!$scope.title || $scope.title === '') {return;}
@@ -22,6 +24,12 @@ angular.module('fishTank')
         $scope.title = '';
         $scope.link = '';
       };
+
+      self.openItem = function(event){
+        console.log(event)
+        event.preventDefault();
+        // $window.open(url, '_blank');
+      }
 
       self.incrementUpvotes = function(post) {
         postsFactory.upvote(post);
