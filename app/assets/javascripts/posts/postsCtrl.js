@@ -4,6 +4,7 @@ angular.module('fishTank')
     'postsFactory',
     'post',
     function($scope, postsFactory, post){
+      $("input").tagsinput('items')
       $scope.post = post;
       $scope.incrementUpvotes = function(comment) {
         postsFactory.upvoteComment(post, comment);

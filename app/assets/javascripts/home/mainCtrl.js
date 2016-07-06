@@ -6,6 +6,7 @@ angular.module('fishTank')
     '$http',
     function($scope, postsFactory, Auth, $http){
       var self = $scope; 
+      
       Auth.currentUser().then(function(user){
         $scope.user = user;
       });

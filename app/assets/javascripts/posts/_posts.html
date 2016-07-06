@@ -8,7 +8,10 @@
       {{post.title}}
     </span>
   </h3>
-</div>
+  <div id="tags-{{post.id}}">
+    <post-tags ng-data={{post.id}}></post-tags>
+  </div>
+</div><br>
 
 <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
   <span class="glyphicon glyphicon-thumbs-up btn-xs" ng-click="incrementUpvotes(comment)"></span>
@@ -19,6 +22,7 @@
   </span>
   - ({{comment.user.username}})
 </div>
+
 <form ng-submit="addComment()" style="margin-top:30px;">
   <h3>Add a new comment</h3>
   <div class="form-group">

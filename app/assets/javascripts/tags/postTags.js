@@ -12,7 +12,8 @@ function postTags(postsFactory){
             itemValue: 'id',
             itemText: 'label'
         });
-         $("div.bootstrap-tagsinput > input").hide()
+          $("input.tags").tagsinput('items')
+          $("div.bootstrap-tagsinput > input").hide()
         for(i = 0; i < postTags.length; i++) {
           var tag = postTags[i]
           $('div#tags-'+ postId).tagsinput('add', { id: tag['id'], label: tag['name'] });
