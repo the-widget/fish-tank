@@ -5,7 +5,6 @@ angular.module('fishTank')
     'Auth',
     '$http',
     function($scope, postsFactory, Auth, $http){
-      $("input#tags").tagsinput('items')
       var self = $scope; 
       Auth.currentUser().then(function(user){
         $scope.user = user;

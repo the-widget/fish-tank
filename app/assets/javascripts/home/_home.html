@@ -36,11 +36,10 @@
     </span>
   </span>
   posted by {{ post.user.username }}
-  <span>
-    <a href="#/posts/{{post.id}}">--Comments</a><br>
-    <post-tags ng-data={{post.id}}></post-tags>
-    <div id="tags-{{post.id}}" class="bootstrap-tagsinput"></div>
-  </span>
+  <a href="#/posts/{{post.id}}">--Comments</a><br>
+    <div id="tags-{{post.id}}">
+      <post-tags ng-data={{post.id}}></post-tags>
+    </div>
 </div>
 
 <form ng-submit="addPost()" style="margin-top:30px";>

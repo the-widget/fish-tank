@@ -24,3 +24,7 @@ rendering in the view. Take a break!
 
 * Set up a way for a user to add a tag to a post on the home screen
 * Display tags in the comments page
+
+** So Home page is  pain in the ass!
+
+* Allow user to add tags on comments page.
