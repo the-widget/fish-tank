@@ -12,21 +12,22 @@
     <post-tags ng-data={{post.id}}></post-tags>
   </div>
 </div><br>
-
-<div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up btn-xs" ng-click="incrementUpvotes(comment)"></span>
-  <span class="glyphicon glyphicon-thumbs-down btn-xs" ng-click="decrementUpvotes(comment)"></span>
-  <span class="badge">{{comment.upvotes}}</span> 
-  <span style="font-size:20px; margin-left:10px;">
-    {{comment.body}}
-  </span>
-  - ({{comment.user.username}})
-</div>
-
-<form ng-submit="addComment()" style="margin-top:30px;">
-  <h3>Add a new comment</h3>
-  <div class="form-group">
-    <input ng-model="body" type="text" class="form-control" placeholder="Comment"></input>
+<div class="text-left">
+  <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up btn-xs" ng-click="incrementUpvotes(comment)"></span>
+    <span class="glyphicon glyphicon-thumbs-down btn-xs" ng-click="decrementUpvotes(comment)"></span>
+    <span class="badge">{{comment.upvotes}}</span> 
+    <span style="font-size:20px; margin-left:10px;">
+      {{comment.body}}
+    </span>
+    - ({{comment.user.username}})
   </div>
-  <button type="submit" class="btn btn-primary">Post</button>
-</form>
+  
+  <form ng-submit="addComment()" style="margin-top:30px;">
+    <h3>Add a new comment</h3>
+    <div class="form-group">
+      <input ng-model="body" type="text" class="form-control" placeholder="Comment"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
+</div>
