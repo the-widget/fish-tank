@@ -13,6 +13,7 @@ angular.module('fishTank')
       self.showAddPost = function(){
         $("div.addPost").toggle();
       }
+      self.showAddPost = function(){$('div.addPost').toggle()}
       self.addPost = function(){
         errors()
         if(!$scope.title || $scope.title === '') {return;}
