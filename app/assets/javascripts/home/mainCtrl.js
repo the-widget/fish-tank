@@ -16,7 +16,7 @@ angular.module('fishTank')
       self.showAddPost = function(){$('div.addPost').toggle()}
       self.addPost = function(){
         errors()
-        if(!$scope.title || $scope.title === '') {return;}
+        if(!$scope.title || $scope.title === '') {$scope.error = "Title can't be blank"; return;}
         postsFactory.create({
           title: $scope.title,
           link: $scope.link,
@@ -25,12 +25,6 @@ angular.module('fishTank')
         $scope.title = '';
         $scope.link = '';
       };
-
-      self.openItem = function(event){
-        console.log(event)
-        event.preventDefault();
-        // $window.open(url, '_blank');
-      }
 
       self.incrementUpvotes = function(post) {
         postsFactory.upvote(post);
@@ -43,6 +37,8 @@ angular.module('fishTank')
       var errors = function() {
         $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
           $scope.error = xhr.data.error
+          setTimeout(function(){ $('p.auth-error').fadeOut();}, 5000);
+          setTimeout(function(){$('p.auth-error').show();}, 10);
         });
       }
 

@@ -1,7 +1,7 @@
 <div class="page-headers">
   <h1>Register</h1>
-  {{error}}
-</div><br>
+  <p class="text-danger">{{error}}</p>
+</div><hr><br>
 
 <div class="col-md-4 col-centered text-centered">
   <form name="registerForm" ng-submit="register()">
@@ -15,9 +15,9 @@
              ng-minlength="5"
              ng-maxlength="30"
              required />
-      <div ng-messages="registerForm.userEmail.$error" ng-show="registerForm.userEmail.$touched">
-        <div ng-message="required"> You did not enter an email address </div>
-        <div ng-messages-include="validations/errorMessages.html"></div>
+      <div class="text-danger" ng-messages="registerForm.userEmail.$error" ng-show="registerForm.userEmail.$touched">
+        <div class="text-danger" ng-message="required"> You did not enter an email address </div>
+        <div class="text-danger" ng-messages-include="validations/errorMessages.html"></div>
       </div>
     </fieldset>
       
@@ -31,9 +31,9 @@
              ng-model="user.username"
              ng-pattern="/^[ A-Za-z0-9_@.\/#&+-]*$/"
              required>
-      <div ng-messages="registerForm.userName.$error" ng-show="registerForm.userName.$touched">
-        <div ng-message when="required">This field is required</div>
-        <div ng-message when="pattern">Only accepts these special characters: (@./#&+_-)</div>
+      <div  class="text-danger" ng-messages="registerForm.userName.$error" ng-show="registerForm.userName.$touched">
+        <div class="text-danger" ng-message when="required">This field is required</div>
+        <div class="text-danger" ng-message when="pattern">Only accepts these special characters: (@./#&+_-)</div>
       </div>
     </fieldset>
   

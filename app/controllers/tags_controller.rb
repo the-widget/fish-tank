@@ -17,7 +17,7 @@ class TagsController < ApplicationController
 
   private
   def tag_params
-    params.require(:post).permit(:link, :title)
+    params.require(:post).permit(:name)
   end
 
 end
