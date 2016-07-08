@@ -1,0 +1,17 @@
+
+  body {
+    padding-top: 70px;
+    background:#8bd0f2 !important;
+  }
+  .glyphicon-thumbs-up {
+   cursor:pointer 
+  }
+  .addPost {
+   cursor:pointer 
+  }
+  .glyphicon-thumbs-down {
+   cursor:pointer 
+  }
+  .col-centered { 
+    float: none; margin: 0 auto; 
+  }
