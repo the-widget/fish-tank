@@ -11,10 +11,13 @@
       <div class="form-group">
         <input type="text" placeholder="Link - http://" ng-model="link" size="50"></input>
       </div>
+      <div class="form-group tag-input">
+        <input type="text" class="tag-input-1" placeholder="Tag" ng-model="tag" size="18"></input> <span ng-click="addTag()">+</span>
+      </div>
         <h4><button type="submit" class="btn label label-success">Post</button></h4>
     </form><br>
-  </div>
 
+  </div>
   <b><input type="checkbox" class="myposts" ng-checked="user.checked" ng-model="checked">My Posts</b>  <b><input type="text" class="search" ng-model="search" placeholder="Search"></b>
   <p>{{error}}</p>
   <hr>

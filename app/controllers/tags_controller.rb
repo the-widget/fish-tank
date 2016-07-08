@@ -5,11 +5,11 @@ class TagsController < ApplicationController
     respond_with Tag.all
   end
 
-  # def create
-  #   post = Post.find(params[:post_id])
-  #   tag = post.tags.create(tag_params)
-  #   respond_with post, tag
-  # end
+  def create
+    post = Post.find(params[:post_id])
+    tag = post.tags.create(tag_params)
+    respond_with post
+  end
 
   def show
     respond_with Tag.find(params[:id])
@@ -17,7 +17,7 @@ class TagsController < ApplicationController
 
   private
   def tag_params
-    params.require(:post).permit(:name)
+    params.require(:tag).permit(:name)
   end
 
 end

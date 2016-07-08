@@ -1,6 +1,6 @@
+//= require angular
 //= require jquery
 //= require jquery-ui
-//= require angular
 //= require angular-devise
 //= require angular-messages
 //= require angular-rails-templates

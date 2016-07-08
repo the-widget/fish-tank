@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'application#angular'
-  resources :tags, only: [:create, :index, :show]
+  resources :tags, only: [:index]
   resources :posts, only: [:create, :index, :show] do
     resources :comments, only: [:show, :create] do
       member do
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       put '/upvote' => 'posts#upvote'
       put '/downvote' => 'posts#downvote'
     end
+
+    resources :tags, only: [:create] 
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
