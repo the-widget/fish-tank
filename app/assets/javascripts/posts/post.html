@@ -1,0 +1,18 @@
+    <span ng-click="incrementUpvotes(post)" class="glyphicon glyphicon-thumbs-up btn-xs"></span>
+    <span ng-click="decrementUpvotes(post)" class="glyphicon glyphicon-thumbs-down btn-xs"></span>
+    <span class="badge">{{post.upvotes}}</span>
+    <span style="font-size:20px; margin-left:10px; margin-right:10px;">
+      <a ng-show="post.link" href="{{post.link}}" target="_blank">
+        {{post.title}} 
+      </a>
+      <span ng-hide="post.link">
+        {{post.title}}
+      </span>
+    </span>
+   - {{ post.user.username }}
+    <span>
+      <a href="#/posts/{{post.id}}">--Comments</a>
+      <div id="tags-{{post.id}}">
+        <post-tags ng-data={{post.id}}></post-tags>
+      </div>
+    </span><br>
