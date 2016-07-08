@@ -15,25 +15,26 @@ angular.module('fishTank')
         $("div.addPost").toggle();
       }
       self.showAddPost = function(){$('div.addPost').toggle()}
-      self.addTag = function(){$('div.tag-input').after("<div class='form-group'> <input type='text' class='tag-input-1' placeholder='Tag' ng-model='tags' size='19'></input></div>")}
-      
+      self.addTag = function(){$('div.tag-input').after("<div class='form-group'> <input type='text' class='tag-inputs-" + $scope.tagInputs + " placeholder='Tag' ng-model='tags' size='19'></input></div>"); $scope.tagInputs++}
+      $scope.tagInputs = 1
       self.addPost = function(){
         errors()
         if(!$scope.title || $scope.title === '') {$scope.error = "Title can't be blank"; return;}
-        
         postsFactory.create({
           title: $scope.title,
           link: $scope.link,
           upvotes: 0
         }).success(function(post){
-          if ($scope.tag){
-            tagsFactory.create(post, {
-              name: $scope.tag
-            })  
+          if ($scope.tagInputs > 1){
+            var tagArray = Array.from($("input[class*='tag-inputs'").map(function(){return($(this).val())}))
+            tagArray.forEach(function(item) {
+              tagsFactory.create(post, {
+                name: item
+              })  
+            });
           }
           self.posts.push(post);
         });
-        $('.form-group > input').each(function(){$(this).val('')})
       };
 
       self.incrementUpvotes = function(post) {
@@ -54,5 +55,13 @@ angular.module('fishTank')
 
     }
   ])
+
+
+
+// $("input[class*='tag-inputs'").map(function(){return($(this).val())})
+
+
+
+
 
 
