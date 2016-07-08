@@ -16,14 +16,24 @@ class PostsController < ApplicationController
 
   def upvote
     post = Post.find(params[:id])
-    post.increment!(:upvotes)
-    respond_with post
+    if !!post.post_votes.find_by(user_id: current_user.id)
+      respond_with post
+    else 
+      post.post_votes.create(user_id: current_user.id)
+      post.increment!(:upvotes)
+      respond_with post
+    end
   end
 
   def downvote
     post = Post.find(params[:id])
-    post.decrement!(:upvotes)
-    respond_with post
+    if !!post.post_votes.find_by(user_id: current_user.id)
+      respond_with post
+    else 
+      post.post_votes.create(user_id: current_user.id)
+      post.decrement!(:upvotes)
+      respond_with post
+    end
   end
 
   private
