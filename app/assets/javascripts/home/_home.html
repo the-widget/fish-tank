@@ -1,6 +1,8 @@
 
   <welcome></welcome>
-  <h4><span class='addPost btn label label-success' ng-click=showAddPost()>Add A New Post</span></h4>
+
+  <h4><span class='addPost btn label label-success' ng-click='showAddPost()'>Add A New Post</span></h4>
+
   <div class="addPost" hidden="" >
     <form ng-submit="addPost()" ng-hide="" style="margin-top:30px";>
       <div class="form-group">
@@ -12,6 +14,7 @@
         <h4><button type="submit" class="btn label label-success">Post</button></h4>
     </form><br>
   </div>
+
   <b><input type="checkbox" class="myposts" ng-checked="user.checked" ng-model="checked">My Posts</b>  <b><input type="text" class="search" ng-model="search" placeholder="Search"></b>
   <p>{{error}}</p>
   <hr>

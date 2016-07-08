@@ -17,11 +17,15 @@ angular.module('fishTank')
       self.addPost = function(){
         errors()
         if(!$scope.title || $scope.title === '') {$scope.error = "Title can't be blank"; return;}
+        
         postsFactory.create({
           title: $scope.title,
           link: $scope.link,
           upvotes: 0
+        }).success(function(data){
+          self.posts.push(data);
         });
+
         $scope.title = '';
         $scope.link = '';
       };

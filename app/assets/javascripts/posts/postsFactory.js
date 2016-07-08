@@ -11,9 +11,7 @@ angular.module('fishTank')
   };
 
   o.create = function(post){
-    return $http.post('/posts.json', post).success(function(data){
-      o.posts.push(data);
-    });
+    return $http.post('/posts.json', post)
   };
 
   o.upvote = function(post) {
