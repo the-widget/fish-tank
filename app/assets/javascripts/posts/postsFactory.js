@@ -3,6 +3,12 @@ angular.module('fishTank')
     var o = {
       posts: []
     };
+
+  var updateVotes = function(post){
+    return $http.get('/posts/' + post.id + '.json').then(function(res){
+      post.upvotes = res.data.upvotes;
+    })
+  }
   
   o.getAll = function(){
     return $http.get('/posts.json').success(function(data){
@@ -17,14 +23,14 @@ angular.module('fishTank')
   o.upvote = function(post) {
     return $http.put('/posts/' + post.id + '/upvote.json')
       .success(function(data){
-        post.upvotes += 1;
+        updateVotes(post);
       });
   };
 
   o.downvote = function(post) {
     return $http.put('/posts/' + post.id + '/downvote.json')
       .success(function(data){
-        post.upvotes -= 1;
+        updateVotes(post);
       });
   };
 
