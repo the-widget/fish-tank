@@ -35,6 +35,7 @@ angular.module('fishTank')
           }
           self.posts.push(post);
         });
+        setTimeout(function(){ $(".form-group > input").each(function(){$(this).val('')});}, 50);
       };
 
       self.incrementUpvotes = function(post) {
