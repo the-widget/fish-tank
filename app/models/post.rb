@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   has_many :post_votes
   belongs_to :user
+  accepts_nested_attributes_for :tags
 
   def as_json(options= {})
     super(options.merge(:include => [:user, :post_votes, :tags, comments: {include: :user}]))

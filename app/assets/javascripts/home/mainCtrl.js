@@ -20,21 +20,18 @@ angular.module('fishTank')
       self.addPost = function(){
         errors()
         if(!$scope.title || $scope.title === '') {$scope.error = "Title can't be blank"; return;}
+        var tagsArray = Array.from($("input[class*='tag-inputs'").map(function(){return({name: $(this).val()})}))
         postsFactory.create({
-          title: $scope.title,
-          link: $scope.link,
-          upvotes: 0
-        }).success(function(post){
-          if ($scope.tagInputs > 1){
-            var tagArray = Array.from($("input[class*='tag-inputs'").map(function(){return($(this).val())}))
-            tagArray.forEach(function(item) {
-              tagsFactory.create(post, {
-                name: item
-              })  
-            });
+          post: {
+            title: $scope.title,
+            link: $scope.link,
+            upvotes: 0,
+            tags_attributes: tagsArray
           }
+        }).success(function(post){
           self.posts.push(post);
         });
+        setTimeout(function(){ $(".form-group > input").each(function(){$(this).val('')});}, 50);
       };
 
       self.incrementUpvotes = function(post) {
