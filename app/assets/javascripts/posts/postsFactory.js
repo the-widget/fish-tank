@@ -21,9 +21,9 @@ angular.module('fishTank')
   };
 
   o.upvote = function(post) {
-    return $http.put('/posts/' + post.id + '/upvote.json')
-      .success(function(data){
-        updateVotes(post);
+    return $http.put('/posts/' + post.id + '/upvote.json', post)
+      .then(function(event, data){
+        console.log(event);
       });
   };
 

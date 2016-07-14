@@ -52,13 +52,3 @@ angular.module('fishTank')
 
     }
   ])
-
-
-
-// $("input[class*='tag-inputs'").map(function(){return($(this).val())})
-
-
-
-
-
-

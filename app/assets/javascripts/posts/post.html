@@ -1,6 +1,6 @@
     <span ng-click="incrementUpvotes(post)" class="glyphicon glyphicon-thumbs-up btn-xs"></span>
     <span ng-click="decrementUpvotes(post)" class="glyphicon glyphicon-thumbs-down btn-xs"></span>
-    <span class="badge">{{post.upvotes}}</span>
+    <span class="badge" ng.model="post.upvotes">{{post.upvotes}}</span>
     <span style="font-size:20px; margin-left:10px; margin-right:10px;">
       <a ng-show="post.link" href="{{post.link}}" target="_blank">
         {{post.title}} 
